@@ -2,39 +2,34 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput, Image } from 'react-native';
 
-export default function App() {
+export default function Login() {
   return (
     <View style={styles.container}>
-       <Image
+      <Image
           style={styles.imagem}
           source={{
             uri: 'https://thumbs.dreamstime.com/b/imagem-do-placeholder-perfil-silhueta-cinzenta-nenhuma-foto-127393523.jpg',
           }}
         />
-      <TextInput style={styles.inputs}
-        placeholder="Nome"
-        placeholderTextColor="white"
+
+
+
+       <TextInput style={styles.estilo}
+        placeholder="Login"
         keyboardType="text"
         
       />
 
-      <TextInput style={styles.inputs}
-        placeholder="CPF"
-        placeholderTextColor="white"
-        keyboardType="text"
-      />
 
-      <TextInput style={styles.inputs}
+       <TextInput style={styles.estilo}
+        placeholder="Senha"
+        keyboardType="text"
         
-        placeholder="E-mail"
-        placeholderTextColor="white"
-        keyboardType="text"
       />
+       <Button color="purple" title="Entrar">
 
+       </Button>
 
-      <Button style={styles.botao} color="purple" title="Salvar">
-
-      </Button>
 
     </View>
   );
@@ -46,28 +41,19 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:"rgb(35, 9, 70)"
   },
 
-  inputs: {
+  estilo: {
     width: 300,
     borderWidth: 1,
     textAlign: "center",
     height: 35,
     marginBottom: 18,
-    borderRadius: 8,
-    borderColor: "white",
-    color:"rgb(0, 255, 21)"
-    
-  },
-
-  fraseinput: {
-    color: "white"
+    borderRadius: 8
   },
 
   botao: {
-    width: 300,
-    
+    width: 300
   },
 
   imagem: {
@@ -76,6 +62,6 @@ const styles = StyleSheet.create({
     height: 200,
     marginBottom: 50,
 
-  },
+  }
   
 });
