@@ -5,46 +5,68 @@ import { Header } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useState } from 'react';
 
 
-export default function App({navigation}) {
+
+export default function App({ navigation }) {
+  function cadastrofirebase() {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, senha)
+      .then((userCredential) => {
+        // Signed in
+        console.log('funfo dnv')
+        const user = userCredential.user;
+        navigation.navigate('login')
+        
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  }
+
+  const[email, setEmail] = useState('')
+  const[senha, setSenha] = useState('')
   return (
     <SafeAreaProvider>
 
-        <View>
-          <Header
-            style={styles.input}
-            leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
-            centerComponent={{ text: 'Login de usuario', style: { color: '#fff' } }}
-            rightComponent={
-                <Button  
-                title="voltar"
-                onPress={()=>navigation.navigate('login')}
-                ></Button>}/>
+      <View>
+        <Header
+          style={styles.input}
+          leftComponent={{ icon: 'menu', color: '#fff', iconStyle: { color: '#fff' } }}
+          centerComponent={{ text: 'Login de usuario', style: { color: '#fff' } }}
+          rightComponent={
+            <Button
+              title="voltar"
+              onPress={() => navigation.navigate('login')}
+            ></Button>} />
 
 
-          <Image
-              style={styles.imagem}
-              source={{
-                uri: 'https://thumbs.dreamstime.com/b/imagem-do-placeholder-perfil-silhueta-cinzenta-nenhuma-foto-127393523.jpg',
-              }}
-            />
-         
-         <Input  placeholder='Nome'/>
-         <Input  placeholder='CPF'/>
-         <Input  placeholder='Email'/>
-         <Input  placeholder='Senha'/>
-         <Button title= 'Salvar'></Button>
-         
-          
+        <Image
+          style={styles.imagem}
+          source={{
+            uri: 'https://thumbs.dreamstime.com/b/imagem-do-placeholder-perfil-silhueta-cinzenta-nenhuma-foto-127393523.jpg',
+          }}
+        />
+
+        <Input placeholder='Nome'/>
+        <Input placeholder='CPF' />
+        <Input placeholder='Email' value={email} onChangeText={email=> setEmail(email)} />
+        <Input placeholder='Senha' value={senha} onChangeText={senha => setSenha(senha)} />
+        <Button title='Salvar' onPress={()=>{cadastrofirebase()}}></Button>
 
 
-          
-          
 
-          
 
-        </View>
+
+
+
+
+
+      </View>
     </SafeAreaProvider>
   );
 }
@@ -55,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:"rgb(35, 9, 70)" 
+    backgroundColor: "rgb(35, 9, 70)"
   },
 
   inputs: {
@@ -66,8 +88,8 @@ const styles = StyleSheet.create({
     marginBottom: 18,
     borderRadius: 8,
     borderColor: "white",
-    color:"rgb(0, 255, 21)"
-    
+    color: "rgb(0, 255, 21)"
+
   },
 
   fraseinput: {
@@ -81,7 +103,7 @@ const styles = StyleSheet.create({
 
   botao2: {
     width: 300,
-    
+
   },
 
   imagem: {
@@ -91,5 +113,5 @@ const styles = StyleSheet.create({
     marginBottom: 50,
 
   },
-  
+
 });

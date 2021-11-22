@@ -9,11 +9,34 @@ import cadastro from './telas/cadastro';
 import lista from './telas/lista';
 import addcontato from './telas/addcontato';
 import alterar from './telas/alterar';
+import { initializeApp } from "firebase/app";
+
 
 
 const Stack = createNativeStackNavigator();
 
 function App() {
+  const firebaseConfig = {
+
+    apiKey: "AIzaSyCwWJ10GTjgnQJ6CGJqBcYyTvC5Ha0nF_w",
+  
+    authDomain: "appreactgabriel.firebaseapp.com",
+  
+    projectId: "appreactgabriel",
+  
+    storageBucket: "appreactgabriel.appspot.com",
+  
+    messagingSenderId: "592904592031",
+  
+    appId: "1:592904592031:web:b7f87229f13dcb1411e0aa"
+  
+  };
+  
+
+  
+  // Initialize Firebase
+  
+  const app = initializeApp(firebaseConfig);
   return (
     <NavigationContainer>
       <Stack.Navigator>
